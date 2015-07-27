@@ -1,0 +1,43 @@
+\documentclass{book}
+\usepackage{multicol}
+\usepackage{tipa}
+\usepackage{fontspec}
+\usepackage{microtype}
+
+% fixes IPA, see http://tex.stackexchange.com/questions/64830/using-tipa-with-fontspec
+\AtBeginDocument{
+  \renewcommand\textipa[2][r]{{\fontfamily{cm#1}\tipaencoding #2}}
+}
+\renewenvironment{IPA}[1][r]
+ {\fontfamily{cm#1}\tipaencoding}
+ {}
+% end fix for IPA
+
+\newcommand{\gr}[1]{\textsl{#1}}
+\newcommand{\ph}[1]{\mbox{\textipa{/{#1}/}}}
+\newcommand{\eg}[1]{\textit{#1}}
+\newenvironment{exceptions}[1]{\bgroup\textbf{Exceptions: #1}\par\begin{multicols}{3}\begin{itemize}}{\end{itemize}\end{multicols}\egroup}
+
+\frenchspacing
+
+\title{Die englische Rechtschreibung}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{The English Writing System}
+
+\input{sections/alphabet}
+
+\chapter{English Sounds}
+
+\input{sections/long-and-short-vowels}
+
+\chapter{Spelling-to-Sound Correspondences}
+
+\input{sections/magic-e}
+\input{sections/simple-consonants}
+\input{sections/context-sensitive-consonants}
+
+\end{document}
